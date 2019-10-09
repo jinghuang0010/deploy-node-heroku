@@ -32,4 +32,4 @@ app.get('/', function(req,resp){
 	}
 });
 })
-app.listen(8080);
+app.listen(3306);
