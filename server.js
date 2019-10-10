@@ -1,6 +1,35 @@
-const express = require('express')
-const app = express()
+var express = require('express');
+var mysql = require('mysql');
+var app = express();
+var connection =mysql.createConnection({
+	
+	host: 'us-cdbr-iron-east-05.cleardb.net',
+	user: 'b23a34da9fe379',
+	password: '68882ca0',
+	database: 'heroku_c595c5d7e6b1b97'
+});
 
-app.use(express.static('public'))
+connection.connect(function(error){
+	if(!!error){
+		console.log('Error');
+	}else{
+		console.log('Connected');
+	}
+	
+});
 
-app.listen(process.env.PORT || 8080, () => console.log("All is ok!"))
+
+
+app.get('/', function(req,resp){
+	 connection.query("select * from jing",function(error,rows,fields){
+	    if(!!error){
+		console.log('Error in the query');
+	}else{
+		console.log('Succeseryl query\n');
+		console.log(rows);
+		resp.send(JSON.stringify(rows));
+		
+	}
+});
+})
+app.listen(1337);
