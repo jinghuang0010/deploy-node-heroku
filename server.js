@@ -15,6 +15,8 @@ connection.connect();
 
 
 
+
+
 app.get('/', function(request,response){
 	 connection.query('select * from jing',function(err,rows,fields){
 	    if(err){
