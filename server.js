@@ -1,6 +1,8 @@
 var express = require('express');
 var mysql = require('mysql');
 var app = express();
+
+
 var connection =mysql.createConnection({
 	
 	host: 'us-cdbr-iron-east-05.cleardb.net',
@@ -9,27 +11,23 @@ var connection =mysql.createConnection({
 	database: 'heroku_c595c5d7e6b1b97'
 });
 
-connection.connect(function(error){
-	if(!!error){
-		console.log('Error');
-	}else{
-		console.log('Connected');
+connection.connect();
+
+
+
+app.get('/', function(request,response){
+	 connection.query('select * from jing',function(err,rows,fields){
+	    if(err){
+		console.log('error',err);
+		throw err;
 	}
+		response.send(['hello world!!!',rows]);
+		
 	
 });
-
-
-
-app.get('/', function(req,resp){
-	 connection.query("select * from jing",function(error,rows,fields){
-	    if(!!error){
-		console.log('Error in the query');
-	}else{
-		console.log('Succeseryl query\n');
-		console.log(rows);
-		resp.send(JSON.stringify(rows));
-		
-	}
 });
-})
-app.listen(1337);
+var port =process.env.PORT || 5000;
+
+app.listen(port,function(){
+	console.log("listen on" + port);
+});
