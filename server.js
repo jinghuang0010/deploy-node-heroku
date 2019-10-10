@@ -27,9 +27,9 @@ app.get('/', function(req,resp){
 	}else{
 		console.log('Succeseryl query\n');
 		console.log(rows);
-		resp.send('Hello, ' + JSON.stringify(rows));
+		resp.send(JSON.stringify(rows));
 		
 	}
 });
 })
-app.listen(3306);
+app.listen(1337);
