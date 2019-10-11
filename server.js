@@ -10,13 +10,15 @@ var pool  = mysql.createPool({
     password: '68882ca0',
     database: 'heroku_c595c5d7e6b1b97'
   });
+
+
   app.get('/', function(request,response){
   pool.query('select * from jing', function (err, rows, fields) {
     if(err){
         console.log('error',err);
         throw err;
     }
-        response.send(['hello jing!!!',rows]);
+        response.send(['hello jing!!!change',rows]);
   });
 });
 
