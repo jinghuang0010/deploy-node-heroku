@@ -12,7 +12,7 @@ var pool  = mysql.createPool({
   });
 
 
-huangjing   come again
+xiaosu
 
   app.get('/', function(request,response){
   pool.query('select * from jing', function (err, rows, fields) {
