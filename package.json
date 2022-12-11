@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/jinghuang0010/deploy-node-heroku#readme",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "mysql": ""
   }
 }
